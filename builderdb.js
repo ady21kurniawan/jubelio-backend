@@ -18,7 +18,6 @@ const init = async () =>{
     });
 
     var json = parser.toJson( await results);
-    console.log( JSON.parse(json));
     var data = JSON.parse(json);
     return data["Products"]["product"];
 }
