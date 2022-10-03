@@ -1,4 +1,5 @@
-const {hello_world, products, listProducts,addProduct, deleteProduct,updateProduct} = require("./controllers/index")
+const {listProducts,addProduct, deleteProduct,updateProduct} = require("./controllers/index");
+
 const routes = [
     {
         method: 'GET',

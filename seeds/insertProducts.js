@@ -7,12 +7,9 @@ const builderdb = require("../builderdb");
 exports.seed = async function(knex) {
 
   const data = await builderdb();
-  console.log(data[0]);
-
   var raws = [];
 
   data.forEach((value, index) => {
-
       var raw = {
         sku:value.prdNo,
         name: value.prdNm,
@@ -24,7 +21,6 @@ exports.seed = async function(knex) {
       raws.push(raw)
   });
 
-  console.log(raws);
   // Deletes ALL existing entries
   await knex('products').del()
   await knex('products').insert(raws);

@@ -1,5 +1,3 @@
-const axios = require('axios').default;
-var parser = require('xml2json');
 const config = require("../knexfile");
 const knex = require('knex')(config);
 const fs = require('fs');
@@ -60,7 +58,6 @@ const addProduct = async (request, h)=>{
             message : "data failed saved"
         }
    } catch (error) {
-        console.log("error", error);
         return {
             success: false,
             message : error.detail
@@ -147,8 +144,6 @@ const updateProduct = async (request, h) => {
             params[column] = request.payload[column];
         }
     });
-
-    console.log( params );
 
     var raw_update = await knex("products")
         .update(params)
