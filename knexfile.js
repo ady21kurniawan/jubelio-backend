@@ -1,17 +1,19 @@
+require('dotenv').config()
 module.exports = {
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      port : 5432,
-      user : 'postgres',
-      password : 'root',
-      database : 'jubelio'
+      host : process.env.DBHOST,
+      port : process.env.PORT,
+      user : process.env.DBUSER,
+      password : process.env.DBPASSWORD,
+      database : process.env.DATABASE
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
+      directory: __dirname + '/migrations'
     }
 };
