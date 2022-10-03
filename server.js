@@ -7,6 +7,11 @@ const init = async () => {
         port: process.env.PORT,
         host: process.env.HOST,
         routes: {
+            cors:{
+                origin:["*"],
+                headers:["Accept","Content-Type","Authorization","x-api-key"],
+                additionalHeaders:["x-Requested-With"]
+            },
             files: {
                 relativeTo: Path.join(__dirname, 'upload')
             }
