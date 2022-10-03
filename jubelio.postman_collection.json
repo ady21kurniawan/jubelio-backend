@@ -8,6 +8,9 @@
 	"item": [
 		{
 			"name": "{{nodejs}}/products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -15,15 +18,33 @@
 						"key": "x-api-key",
 						"value": "guest",
 						"type": "text"
+					},
+					{
+						"key": "debugger",
+						"value": "false",
+						"type": "text",
+						"disabled": true
 					}
 				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "limit",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
 				"url": {
-					"raw": "{{nodejs}}/products",
+					"raw": "{{nodejs}}/products/3",
 					"host": [
 						"{{nodejs}}"
 					],
 					"path": [
-						"products"
+						"products",
+						"3"
 					]
 				}
 			},
@@ -154,6 +175,36 @@
 					"path": [
 						"delete-product",
 						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{nodejs}}/show-product/1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "guest",
+						"type": "text"
+					},
+					{
+						"key": "debugger",
+						"value": "false",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{nodejs}}/show-product/1",
+					"host": [
+						"{{nodejs}}"
+					],
+					"path": [
+						"show-product",
+						"1"
 					]
 				}
 			},

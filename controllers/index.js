@@ -4,12 +4,29 @@ const fs = require('fs');
 
 
 const listProducts = async (request, h)=>{
+    var limit = request.params.limit ? request.params.limit : 3;
     if( request.headers["x-api-key"].toLowerCase() != 'guest' )
     {
         return {message:'unautorization - xapikey is required'}
     }
 
-    var data = await knex.select().table('products');
+    var data = await knex.select().table('products').limit(limit);
+    return {
+        success:true,
+        message:"success",
+        data: data
+    };
+}
+
+const showProducts = async (request, h)=>{
+    var offset = request.params.offset ? request.params.offset : 0;
+    console.log(offset);
+    if( request.headers["x-api-key"].toLowerCase() != 'guest' )
+    {
+        return {message:'unautorization - xapikey is required'}
+    }
+
+    var data = await knex.select().table('products').offset(offset).limit(3);
     return {
         success:true,
         message:"success",
@@ -173,5 +190,6 @@ module.exports = {
     listProducts, 
     addProduct, 
     deleteProduct, 
-    updateProduct
+    updateProduct,
+    showProducts
 };

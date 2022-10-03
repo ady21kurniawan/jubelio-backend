@@ -1,10 +1,16 @@
-const {listProducts,addProduct, deleteProduct,updateProduct} = require("./controllers/index");
+const {listProducts,addProduct, deleteProduct,updateProduct,showProducts} = require("./controllers/index");
 
 const routes = [
     {
         method: 'GET',
-        path: '/products',
-        handler: listProducts
+        path: '/products/{limit?}',
+        handler: listProducts,
+       
+    },
+    {
+        method: 'GET',
+        path: '/show-product/{offset?}',
+        handler: showProducts,
        
     },
     {
